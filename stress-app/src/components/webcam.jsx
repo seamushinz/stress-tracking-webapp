@@ -67,7 +67,7 @@ export default function Webcam() {
                    const faceLandmarkerResult = faceLandmarker.detectForVideo(video, performance.now());
                    if (faceLandmarkerResult.faceLandmarks) {
                        if (faceLandmarkerResult.faceBlendshapes) {
-                           console.log("Blendshapes detected:", faceLandmarkerResult.faceBlendshapes[0].categories);
+                           //console.log("Blendshapes detected:", faceLandmarkerResult.faceBlendshapes[0].categories);
                            setBlendShapes(faceLandmarkerResult.faceBlendshapes[0].categories);
                        }
                        lastVideoTime = video.currentTime;
@@ -81,22 +81,22 @@ export default function Webcam() {
    }, []);
 
    return (
-<div className={styles.container}>
-    <h2 className={styles.title}>Webcam</h2>
-    <p className={styles.description}>This is a webcam test.</p>
-    <div style={{ display: 'flex' }}>
-        <div>
-            <video id="webcam" autoPlay playsInline muted width="640" height="480"></video>
-            <canvas className="output_canvas" id="output_canvas" width="640" height="480"></canvas>
+    <div className={styles.container}>
+        <h2 className={styles.title}>Webcam</h2>
+        <p className={styles.description}>This is a webcam test.</p>
+        <div style={{ display: 'flex' }}>
+            <div>
+                <video id="webcam" autoPlay playsInline muted width="640" height="480"></video>
+                <canvas className="output_canvas" id="output_canvas" width="640" height="480"></canvas>
+            </div>
+            <ul style={{ marginRight: '150px' }}>
+                {blendShapes.map((shape, index) => (
+                    <li key={index}>
+                        {shape.displayName || shape.categoryName}: {shape.score.toFixed(4)}
+                    </li>
+                ))}
+            </ul>
         </div>
-        <ul style={{ marginRight: '150px' }}>
-            {blendShapes.map((shape, index) => (
-                <li key={index}>
-                    {shape.displayName || shape.categoryName}: {shape.score.toFixed(4)}
-                </li>
-            ))}
-        </ul>
     </div>
-</div>
    );
 }
