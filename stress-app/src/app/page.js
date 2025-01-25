@@ -8,7 +8,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>Stress Test</h1>
         <p className={styles.description}>This is a stress test application.</p>
-        <Webcam></Webcam>
+        <Webcam/>
         </main>
     </div>
   );
