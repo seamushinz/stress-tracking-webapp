@@ -10,7 +10,7 @@ export default function Home() {
         <div className="mainContent">
           <div className="main">
             <div className="menu">
-              <NotificationRequestButton className="menuButton"/>
+              <NotificationRequestButton/>
               <button className="menuButton">Options</button>
               <button className="menuButton">Github</button>
             </div>
