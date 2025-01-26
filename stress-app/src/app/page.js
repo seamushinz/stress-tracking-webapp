@@ -15,7 +15,7 @@ export default function Home() {
               <button className="menuButton">Github</button>
             </div>
             <div className="stressText">
-              <h1 className="stressTitle">Your Stress level is <br/>_Example_</h1>
+              <h1 className="stressTitle">Your Stress level is: <br/>_Example_</h1>
               <p className="stressDescription">This is where a tidbit of knowledge would show up. too stressed? maybe take a break! Stress levels fine?
                 keep on keeping on! text. Our Bonzai buddy/clippy clone has this to say to you:
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>

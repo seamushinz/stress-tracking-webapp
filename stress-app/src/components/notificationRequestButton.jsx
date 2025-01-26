@@ -26,7 +26,7 @@ export default function NotificationRequestButton() {
 
   return (
     !isPermissionGranted && (
-      <button onClick={requestNotificationPermission}>
+      <button onClick={requestNotificationPermission} className='menuButton'>
         Request Notification Permission
       </button>
     )
