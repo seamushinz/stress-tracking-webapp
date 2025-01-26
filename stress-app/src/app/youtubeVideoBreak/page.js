@@ -27,6 +27,7 @@ const videoCategories = {
 const YoutubeVideoBreak = () => {
   const [videoUrl, setVideoUrl] = useState('');
   const [breakComplete, setBreakComplete] = useState(false);
+  const [countdown, setCountdown] = useState(120); // 2 minutes countdown
 
   useEffect(() => {
     if (videoUrl) {
@@ -34,7 +35,20 @@ const YoutubeVideoBreak = () => {
         setBreakComplete(true);
       }, 2 * 60 * 1000); // 2 minute break
 
-      return () => clearTimeout(timer);
+      const interval = setInterval(() => {
+        setCountdown((prevCountdown) => {
+          if (prevCountdown <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prevCountdown - 1;
+        });
+      }, 1000);
+
+      return () => {
+        clearTimeout(timer);
+        clearInterval(interval);
+      };
     }
   }, [videoUrl]);
 
@@ -42,7 +56,11 @@ const YoutubeVideoBreak = () => {
     const videos = videoCategories[category];
     const randomVideo = videos[Math.floor(Math.random() * videos.length)];
     setVideoUrl(randomVideo);
+    setBreakComplete(false);
+    setCountdown(120); // reset countdown
   };
+
+  const value = (countdown/(2*60))*100;
 
   return (
     <div>
@@ -64,21 +82,14 @@ const YoutubeVideoBreak = () => {
            frameBorder="0" 
            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
             web-share" referrerPolicy="strict-origin-when-cross-origin"/>
+          <h3>Time remaining: {Math.floor(countdown / 60)}:{('0' + (countdown % 60)).slice(-2)}</h3>
+          <div className="progress-bar">
+              <div className="progress" style={{width: `${value}%`}}></div>
+          </div>
         </div>
-      )}
-        {breakComplete && (
-                <button style={buttonStyle} onClick={() => window.location.href = '/'}>Return to App</button>
       )}
     </div>
   );
 };
 
 export default YoutubeVideoBreak;
-
-
-const buttonStyle = {
-  marginTop: '20px',
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer'
-};
