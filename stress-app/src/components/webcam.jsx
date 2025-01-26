@@ -66,22 +66,25 @@ export default function Webcam({ setStressLevel }) {
 
            function renderLoop() {
                if (video.currentTime !== lastVideoTime) {
+                   lastVideoTime = video.currentTime;
                    const faceLandmarkerResult = faceLandmarker.detectForVideo(video, performance.now());
-                   if (faceLandmarkerResult.faceLandmarks) {
-                       if (faceLandmarkerResult.faceBlendshapes) {
-                           const detectedBlendshapes = faceLandmarkerResult.faceBlendshapes[0].categories
-                           console.log("Blendshapes detected:", detectedBlendshapes);
-                           setBlendShapes(detectedBlendshapes);
+                   if (faceLandmarkerResult.faceLandmarks &&
+                       faceLandmarkerResult.faceBlendshapes &&
+                       faceLandmarkerResult.faceBlendshapes.length > 0
+                    ) {
+                        const detectedBlendshapes = faceLandmarkerResult.faceBlendshapes[0].categories
+                        console.log("Blendshapes detected:", detectedBlendshapes);
+                        setBlendShapes(detectedBlendshapes);
 
-                           const now = Date.now();
-                           if (now - lastSentTime >= throttleInterval) {
-                            lastSentTime = now;
-                            sendBlendshapesToBackend(detectedBlendshapes);
-                           }
-                       }
-                       lastVideoTime = video.currentTime;
+                        const now = Date.now();
+                        if (now - lastSentTime >= throttleInterval) {
+                        lastSentTime = now;
+                        sendBlendshapesToBackend(detectedBlendshapes);
+                        }
+                    } else {
+                        setStressLevel("Loading...");
+                    }
                    }
-               }
                requestAnimationFrame(renderLoop);
            }
 
