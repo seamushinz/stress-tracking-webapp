@@ -1,32 +1,65 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../page.module.css";
 import Webcam from "@/components/webcam";
 
-export default function Home() {
+const buttonStyle = {
+  marginTop: '20px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer'
+};
 
+export default function BreakTimer() {
   const [stressLevel, setStressLevel] = useState("Loading...");
-  const [isLookingAtScreen, setIsLookingAtScreen] = useState(false);
+  const [timeAway, setTimeAway] = useState(0);
+  const [breakComplete, setBreakComplete] = useState(false);
+  const timerRunningRef = useRef(false);
+  const timerRef = useRef(null);
 
-  function detectUserFace() {
-      if (!isLookingAtScreen && stressLevel > 5) {
-        new Notification('Stress App', {
-          body: 'Stop Looking at the screen! Go take a break!'
-        });
-        setIsLookingAtScreen(true);
-      }else if (isLookingAtScreen && stressLevel < 5) {
-        setIsLookingAtScreen(false);
-      }
-  }
-  detectUserFace();
+  useEffect(() => {
+    if (stressLevel === "Loading..." && !breakComplete) {
+      if (!timerRunningRef.current) {
+        timerRunningRef.current = true;
+        timerRef.current = setInterval(() => {
+          setTimeAway((prev) => prev + 1);
+        }, 1000);
+     }
+    } else {
+      timerRunningRef.current = false;
+      setTimeAway(0);
+      clearInterval(timerRef.current)
+    }
+
+    return () => clearInterval(timerRef.current);
+  }, [stressLevel, breakComplete]);
+
+  useEffect(() => {
+    if (timeAway >= 10 && !breakComplete) {
+      new Notification("Great job!", {
+        body: "You've looked away from your screen for 2 minutes!",
+      });
+      setBreakComplete(true);
+      clearInterval(timerRef.current);
+      timerRunningRef.current = false;
+    }
+  }, [timeAway, breakComplete]);
 
   return (
     <div className={styles.page}>
       <Webcam setStressLevel={setStressLevel} />
       <div className="mainContent">
-        <h1>{isLookingAtScreen ? "You are looking at the screen" : "You are not looking at the screen"}<br/>{stressLevel}</h1>
-        
+        {stressLevel === "Loading..." && !breakComplete ? (
+          <h1>Look away from the screen! Timer: {timeAway}s</h1>
+        ) : breakComplete ? (
+          <h1>Break complete! Feel free to return to the app.</h1>
+        ) : (
+          <h1>You’re looking at the screen. Take a break!</h1>
+        )}
+        {breakComplete && (
+                <button style={buttonStyle} onClick={() => window.location.href = '/'}>Return to App</button>
+            )}
       </div>
     </div>
-  );
+  )
 }
