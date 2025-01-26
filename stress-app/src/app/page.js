@@ -83,6 +83,8 @@ export default function Home() {
     return entry ? entry.text : "Unknown Stress Level"
   }
 
+  const value = Math.min(Math.max(stressLevel, 0), 100);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -108,7 +110,9 @@ export default function Home() {
           <div className="sidebar">
             <Webcam setStressLevel={setStressLevel} />
             <h5 className="stressPercent">{stressLevel}% Stress</h5>
-            <p>Stress bar to go here</p>
+            <div className="progress-bar">
+              <div className="progress" style={{width: `${value}%`}}></div>
+            </div>
           </div>
         </div>
         <div className="mascot section">
