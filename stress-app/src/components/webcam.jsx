@@ -70,7 +70,7 @@ export default function Webcam({ setStressLevel }) {
                    if (faceLandmarkerResult.faceLandmarks) {
                        if (faceLandmarkerResult.faceBlendshapes) {
                            const detectedBlendshapes = faceLandmarkerResult.faceBlendshapes[0].categories
-                           //console.log("Blendshapes detected:", detectedBlendshapes);
+                           console.log("Blendshapes detected:", detectedBlendshapes);
                            setBlendShapes(detectedBlendshapes);
 
                            const now = Date.now();
@@ -90,6 +90,7 @@ export default function Webcam({ setStressLevel }) {
 
        async function sendBlendshapesToBackend(blendshapeData) {
         const selectedFeatures = [
+            "_neutral",
             "browDownLeft",
             "browDownRight",
             "browOuterUpLeft",
