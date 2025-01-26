@@ -100,7 +100,7 @@ export default function Home() {
               <div className="destresserPick">
                 <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
                 <DestresserPickButton route={"/stepAwayFromComputer"} destresserName={"Take A Screen Break"} />
-                <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+                <DestresserPickButton route={"/youtubeVideoBreak"} destresserName={"Watch a relaxing video"} />
               </div>
             ) : null}
             </div>
