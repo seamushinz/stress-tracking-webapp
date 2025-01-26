@@ -9,6 +9,21 @@ export default function Home() {
 
   const [stressLevel, setStressLevel] = useState("Loading...");
 
+  const stressTexts = [
+    { range: [0, 20], text: "Restful Rabbit" },
+    { range: [20, 40], text: "Worried Wombat" },
+    { range: [40, 60], text: "Tense Tortoise" },
+    { range: [60, 80], text: "Frazzled Fox" },
+    { range: [80, 100], text: "Panicked Peacock" },
+  ];
+
+  const getStressText = (level) => {
+    const entry = stressTexts.find(
+      (item) => level >= item.range[0] && level < item.range[1]
+    );
+    return entry ? entry.text : "Unknown Stress Level"
+  }
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -20,7 +35,7 @@ export default function Home() {
               <button className="menuButton">Github</button>
             </div>
             <div className="stressText">
-              <h1 className="stressTitle">Your Stress level is: <br/>__Example__</h1>
+              <h1 className="stressTitle">Your Stress level is: <br/>{getStressText(stressLevel)}</h1>
               <p className="stressDescription">This is where a tidbit of knowledge would show up. too stressed? maybe take a break! Stress levels fine?
                 keep on keeping on! text. Our Bonzai buddy/clippy clone has this to say to you:
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>

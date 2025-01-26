@@ -92,9 +92,20 @@ export default function Webcam({ setStressLevel }) {
         const selectedFeatures = [
             "browDownLeft",
             "browDownRight",
+            "browOuterUpLeft",
+            "browOuterUpRight",
             "jawClench",
             "mouthFrownLeft",
             "mouthFrownRight",
+            "eyeSquintLeft",
+            "eyeSquintRight",
+            "eyeBlinkLeft",
+            "eyeBlinkRight",
+            "mouthPucker",
+            "browInnerUp",
+            "mouthShrugLower",
+            "mouthShrugUpper",
+            "jawOpen",
         ];
   
         const filteredData = blendshapeData.reduce((acc, shape) => {
