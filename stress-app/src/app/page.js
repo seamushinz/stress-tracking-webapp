@@ -10,12 +10,12 @@ export default function Home() {
         <div className="mainContent">
           <div className="main">
             <div className="menu">
-              <NotificationRequestButton/>
+              <NotificationRequestButton className="menuButton"/>
               <button className="menuButton">Options</button>
               <button className="menuButton">Github</button>
             </div>
             <div className="stressText">
-              <h1 className="stressTitle">Your Stress level is <br/>_Example_</h1>
+              <h1 className="stressTitle">Your Stress level is: <br/>_Example_</h1>
               <p className="stressDescription">This is where a tidbit of knowledge would show up. too stressed? maybe take a break! Stress levels fine?
                 keep on keeping on! yada yada yada flavor text. Our Bonzai buddy/clippy clone has this to say to you: 
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>
