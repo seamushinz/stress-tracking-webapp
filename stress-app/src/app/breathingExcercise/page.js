@@ -3,6 +3,5 @@ export default function BreathingExercise() {
         <div>
             <h1>Breathing Exercise</h1>
         </div>
-
     )
 };

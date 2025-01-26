@@ -20,7 +20,7 @@ export default function Home() {
                 keep on keeping on! text. Our Bonzai buddy/clippy clone has this to say to you:
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>
             </div>
-            <DestresserPickButton route={"../app/breathingExcercise/page.js"} destresserName={"Breathing Excercise"} />
+            <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
           </div>
           <div className="sidebar">
             <Webcam/>
