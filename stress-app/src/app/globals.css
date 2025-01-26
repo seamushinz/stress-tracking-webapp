@@ -148,3 +148,32 @@ margin-right: 2vw;
 .fade-out{
   opacity: 0;
 }
+
+.grass{
+  background-image: url("/coolGrass.png");
+  background-repeat: repeat-x;
+  height: 30vh;
+  background-size: auto 15vh;
+  width: 100vw;
+  background-position: bottom;
+}
+
+.bunny{
+  height: 30vh;
+  position: absolute;
+  top: 74vh;
+  left: 80vw;
+  animation: flip 4s infinite step-start;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0); /* No flip at the start */
+  }
+  50% {
+    transform: rotateY(180deg); /* Flip the element halfway */
+  }
+  100% {
+    transform: rotateY(0); /* Complete the flip (return to original) */
+  }
+}

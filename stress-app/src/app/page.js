@@ -112,8 +112,9 @@ export default function Home() {
           </div>
         </div>
         <div className="mascot section">
-          <p>grass goes here</p>
-          <p>mascot goes here</p>
+          <div className="grass">
+            <img src="/bunnyT.png" className="bunny"/>
+          </div>
         </div>
         </main>
     </div>
