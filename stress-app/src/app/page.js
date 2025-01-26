@@ -93,7 +93,9 @@ export default function Home() {
             <div className="menu">
               <NotificationRequestButton/>
               <button className="menuButton">Options</button>
-              <button className="menuButton">Github</button>
+              <a href="https://github.com/seamushinz/stress-tracking-webapp" target="_blank">
+                <button className="menuButton">Github</button>
+              </a>
             </div>
             <div className="stressText">
               <h1 className="stressTitle">Your Stress level is: <br/>{getStressText(stressLevel)}</h1>
@@ -117,6 +119,10 @@ export default function Home() {
         </div>
         <div className="mascot section">
           <div className="grass">
+            {isOverStressed ? (
+            <p className="bunnyText">Hey there! lets take a moment to destress a little! choose a destressing method!</p>
+            ) : null}
+            
             <img src="/bunnyT.png" className="bunny"/>
           </div>
         </div>
