@@ -68,7 +68,14 @@ a {
   background-color: var(--background);
   height: 10vh;
   width: 10vw;
+  font-size: 2vw;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.menuButton:hover {
+  background-color: var(--secondary);
+  color: var(--background);
 }
 
 .stressText{
