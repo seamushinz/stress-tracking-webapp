@@ -2,24 +2,14 @@
     import Webcam from "@/components/webcam";
     import NotificationRequestButton from "@/components/notificationRequestButton";
 
-<<<<<<< Updated upstream
-    export default function Home() {
-      return (
-        <div className={styles.page}>
-          <main className={styles.main}>
-            <NotificationRequestButton/>
-            <Webcam />
-          </main>
-        </div>
-      );
-    }
-=======
+
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className="main">
           <div className="menu">
+            <NotificationRequestButton/>
             <button className="menuButton">Options</button>
             <button className="menuButton">Github</button>
           </div>
@@ -33,4 +23,3 @@ export default function Home() {
     </div>
   );
 }
->>>>>>> Stashed changes
