@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import Webcam from "@/components/webcam";
 import NotificationRequestButton from "@/components/notificationRequestButton";
+import DestresserPickButton from "@/components/destresserPickButton";
 
 export default function Home() {
 
