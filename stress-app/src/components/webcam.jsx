@@ -115,7 +115,7 @@ export default function Webcam({ setStressLevel }) {
           return acc;
         }, {});
   
-        console.log("Filtered Data Sent to Backend:", filteredData);
+        //console.log("Filtered Data Sent to Backend:", filteredData);
 
         try {
           const response = await fetch("http://127.0.0.1:8000/predict", {
@@ -126,7 +126,7 @@ export default function Webcam({ setStressLevel }) {
   
           const result = await response.json();
           setStressLevel(result.stress_percentage.toFixed(2));
-          console.log("Backend Response:", result);
+          //console.log("Backend Response:", result);
           
         } catch (err) {
           setStressLevel("Error");

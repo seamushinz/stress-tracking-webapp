@@ -18,7 +18,7 @@ export default function Home() {
     { range: [80, 100], text: "Panicked Peacock" },
   ];
   function detectHighStress() {
-      if (!isOverStressed && stressLevel > 40) {
+      if (!isOverStressed && stressLevel > 45) {
         new Notification('Stress App', {
           body: 'You\'re stressed! Take a break!'
         });
@@ -49,14 +49,14 @@ export default function Home() {
               <p className="stressDescription">This is where a tidbit of knowledge would show up. too stressed? maybe take a break! Stress levels fine?
                 keep on keeping on! text. Our Bonzai buddy/clippy clone has this to say to you:
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>
-            </div>
-            {isOverStressed ? (
+                {isOverStressed ? (
               <div className="destresserPick">
                 <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
-                <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+                <DestresserPickButton route={"/stepAwayFromComputer"} destresserName={"Take A Screen Break"} />
                 <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
               </div>
             ) : null}
+            </div>
           </div>
           <div className="sidebar">
             <Webcam setStressLevel={setStressLevel} />

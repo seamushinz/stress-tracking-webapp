@@ -68,6 +68,7 @@ a {
   background-color: var(--background);
   height: 10vh;
   width: 10vw;
+  cursor: 'pointer';
 }
 
 .stressText{
@@ -115,4 +116,22 @@ margin-right: 2vw;
 
 .mascotSection{
   height: 30vh;
+}
+
+.destresserLink {
+  color: var(--foreground);
+  background-color: var(--background);
+  text-decoration: none;
+  font-size: 18px;
+  padding: 16px;
+  border: 1px solid var(--foreground);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 15px;
+  margin-top: 20px;
+  /* Add hover styles */
+  &:hover {
+    color: var(--background);
+    background-color: var(--foreground);
+  }
 }

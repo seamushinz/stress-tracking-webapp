@@ -14,7 +14,10 @@ const BreathingExercise = () => {
 
     return (
         <div style={containerStyle}>
-        <h1 style={titleStyle}>Breathing Exercise</h1>
+        <div>
+        <h1>Breathing Exercise</h1>
+        <p style={{marginBottom : '60px'}}>Time your breathing with the circle's pulses.</p>
+        </div>
             <div style={circleStyle}></div>
             {animationComplete && (
                 <button style={buttonStyle} onClick={() => window.location.href = '/'}>Return to App</button>
@@ -35,14 +38,12 @@ const containerStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'middle',
+
     height: '100vh',
     fontFamily: 'Arial, sans-serif'
 };
 
-const titleStyle = {
-    marginBottom: '60px'
-};
 
 const circleStyle = {
     width: '150px',
