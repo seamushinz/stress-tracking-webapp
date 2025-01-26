@@ -8,9 +8,19 @@ import DestresserPickButton from "@/components/destresserPickButton";
 export default function Home() {
 
   const [stressLevel, setStressLevel] = useState("Loading...");
+  const [options, setOptions] = useState(false);
   const [isOverStressed, setIsOverStressed] = useState(false);
   const [currentTipIndex, setCurrentTipIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState("fade-in");
+  const [currentThreshold, setCurrentTreshold] = useState(50);
+  
+  const toggleOptions = () => {
+    setOptions(!options)
+  };
+
+  const toggleTreshold = (event) => {
+    setCurrentTreshold(event.target.value);
+  };
 
   function randomize(arr) {
     const randomized = arr;
@@ -67,7 +77,7 @@ export default function Home() {
     { range: [80, 100], text: "Panicked Peacock" },
   ];
   function detectHighStress() {
-      if (!isOverStressed && stressLevel > 45) {
+      if (!isOverStressed && stressLevel > currentThreshold) {
         new Notification('Stress App', {
           body: 'You\'re stressed! Take a break!'
         });
@@ -92,11 +102,22 @@ export default function Home() {
           <div className="main">
             <div className="menu">
               <NotificationRequestButton/>
-              <button className="menuButton">Options</button>
+              <button className="menuButton" onClick={toggleOptions}>Options</button>
               <a href="https://github.com/seamushinz/stress-tracking-webapp" target="_blank">
                 <button className="menuButton">Github</button>
               </a>
             </div>
+            { options ? (
+            <div className="options">
+              <p>Stress Level Threshold</p>
+              <div className="slider">
+                <p>0</p>
+              <input type="range" min={0} max={100} value={currentThreshold} onChange={toggleTreshold}/>
+              <p>100</p>
+              </div>
+              <p>{currentThreshold}</p>
+            </div>
+            ) : null}
             <div className="stressText">
               <h1 className="stressTitle">Your Stress level is: <br/>{getStressText(stressLevel)}</h1>
               <p className={`stressDescription ${fadeClass}`}>{relaxationTips[currentTipIndex]}</p>

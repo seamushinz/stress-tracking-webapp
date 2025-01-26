@@ -222,3 +222,24 @@ margin-right: 2vw;
     opacity: 1;
   }
 }
+
+.options{
+  position: absolute;
+  background-color: var(--secondary);
+  top:10vw;
+  left: 20vh;
+  width: 40vw;
+  height: 30vh;
+  z-index: 10;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+.slider{
+  display: flex;
+  justify-content: center;
+  padding-top: 2vh;
+}
