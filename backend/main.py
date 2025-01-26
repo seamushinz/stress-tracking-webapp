@@ -25,6 +25,7 @@ class TestData(BaseModel):
     message: str
 
 class BlendshapeData(BaseModel):
+    _neutral: float = 0.0
     browDownLeft: float = 0.0
     browDownRight: float = 0.0
     browOuterUpLeft: float = 0.0
@@ -51,8 +52,9 @@ async def test_endpoint(data: TestData):
 @app.post("/predict")
 async def predict_stress(data: BlendshapeData):
     weights = {
-    "browDownLeft": 0.2,
-    "browDownRight": 0.2,
+    "_neutral": -0.5,
+    "browDownLeft": 0.3,
+    "browDownRight": 0.3,
     "browOuterUpLeft": 0.1,
     "browOuterUpRight": 0.1,
     "jawClench": 0.35,

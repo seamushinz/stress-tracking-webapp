@@ -116,3 +116,16 @@ margin-right: 2vw;
 .mascotSection{
   height: 30vh;
 }
+
+.stressDescription{
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.fade-in{
+  opacity: 1;
+}
+
+.fade-out{
+  opacity: 0;
+}
