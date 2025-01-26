@@ -44,3 +44,6 @@ yarn-error.log*
 next-env.d.ts
 /stress-app/node_modules/
 /stress-app/.next/
+.vscode/tasks.json
+
+/backend/__pycache__
