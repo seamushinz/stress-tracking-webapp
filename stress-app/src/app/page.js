@@ -8,6 +8,7 @@ import DestresserPickButton from "@/components/destresserPickButton";
 export default function Home() {
 
   const [stressLevel, setStressLevel] = useState("Loading...");
+  const [isOverStressed, setIsOverStressed] = useState(false);
 
   const stressTexts = [
     { range: [0, 20], text: "Restful Rabbit" },
@@ -16,6 +17,15 @@ export default function Home() {
     { range: [60, 80], text: "Frazzled Fox" },
     { range: [80, 100], text: "Panicked Peacock" },
   ];
+  function detectHighStress() {
+      if (!isOverStressed && stressLevel > 40) {
+        new Notification('Stress App', {
+          body: 'You\'re stressed! Take a break!'
+        });
+        setIsOverStressed(true);
+      }
+  }
+  detectHighStress();
 
   const getStressText = (level) => {
     const entry = stressTexts.find(
@@ -40,7 +50,13 @@ export default function Home() {
                 keep on keeping on! text. Our Bonzai buddy/clippy clone has this to say to you:
                 “Why did the chicken cross the road? Because he was too stressed!”.</p>
             </div>
-            <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+            {isOverStressed ? (
+              <div className="destresserPick">
+                <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+                <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+                <DestresserPickButton route={"/breathingExcercise"} destresserName={"Breathing Excercise"} />
+              </div>
+            ) : null}
           </div>
           <div className="sidebar">
             <Webcam setStressLevel={setStressLevel} />
