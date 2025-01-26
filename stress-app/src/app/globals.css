@@ -43,7 +43,10 @@ a {
 }
 
 /* this is some figma stuff */
-
+.mainContent{
+  display: flex;
+  flex-wrap: wrap;
+}
 .main{
   float: left;
   width: 70vw;
@@ -57,11 +60,11 @@ a {
 .sidebar{
 float:right;
 width:30vw;
+height: 70vh;
 }
 
 .webcam{
   width: 30vw;
-  flex-shrink: 0;
   border-radius: 50px;
 }
 
@@ -69,4 +72,8 @@ width:30vw;
   text-align: center;
   font-size:x-large;
   font-weight: bold;
+}
+
+.mascotSection{
+  height: 30vh;
 }
