@@ -86,7 +86,7 @@ export default function Webcam() {
         <p className={styles.description}>This is a webcam test.</p>
         <div style={{ display: 'flex' }}>
             <div>
-                <video id="webcam" autoPlay playsInline muted width="640" height="480"></video>
+                <video id="webcam" autoPlay playsInline muted className='webcam'></video>
                 <canvas className="output_canvas" id="output_canvas" width="640" height="480"></canvas>
             </div>
             <ul style={{ marginRight: '150px' }}>
