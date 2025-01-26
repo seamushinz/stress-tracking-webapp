@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 
-const BreathingExercise = () => {
+export default function BreathingExercise() {
     const [animationComplete, setAnimationComplete] = useState(false);
 
     useEffect(() => {
@@ -14,7 +14,9 @@ const BreathingExercise = () => {
 
     return (
         <div style={containerStyle}>
-        <h1 style={titleStyle}>Breathing Exercise</h1>
+          <div style={contentStyle}>
+            <h1>Time your breathing with the circle's pulses</h1>
+          </div>
             <div style={circleStyle}></div>
             {animationComplete && (
                 <button style={buttonStyle} onClick={() => window.location.href = '/'}>Return to App</button>
@@ -36,13 +38,20 @@ const containerStyle = {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+
     height: '100vh',
-    fontFamily: 'Arial, sans-serif'
+    fontFamily: 'Arial, sans-serif',
+    textAlign: "center",
+    tranform: "translateY(-20%)",
 };
 
-const titleStyle = {
-    marginBottom: '60px'
-};
+const contentStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "40px",
+    marginBottom: "10vh",
+}
 
 const circleStyle = {
     width: '150px',
@@ -59,5 +68,3 @@ const buttonStyle = {
     fontSize: '16px',
     cursor: 'pointer'
 };
-
-export default BreathingExercise;
