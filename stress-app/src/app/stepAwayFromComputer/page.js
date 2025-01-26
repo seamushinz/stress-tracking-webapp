@@ -2,13 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "../page.module.css";
 import Webcam from "@/components/webcam";
-
-const buttonStyle = {
-  marginTop: '20px',
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer'
-};
+import { Container } from "postcss";
 
 export default function BreakTimer() {
   const [stressLevel, setStressLevel] = useState("Loading...");
@@ -46,9 +40,9 @@ export default function BreakTimer() {
   }, [timeAway, breakComplete]);
 
   return (
-    <div className={styles.page}>
+    <div style={containerStyle}>
       <Webcam setStressLevel={setStressLevel} />
-      <div className="mainContent">
+      <div style={mainContentStyle}>
         {stressLevel === "Loading..." && !breakComplete ? (
           <h1>Look away from the screen! Timer: {timeAway}s</h1>
         ) : breakComplete ? (
@@ -62,4 +56,29 @@ export default function BreakTimer() {
       </div>
     </div>
   )
-}
+};
+
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+
+  height: '100vh',
+  fontFamily: 'Arial, sans-serif',
+  textAlign: 'center',
+};
+
+const mainContentStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '20px',
+};
+
+const buttonStyle = {
+  marginTop: '20px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer'
+};
