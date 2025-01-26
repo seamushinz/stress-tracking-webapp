@@ -68,7 +68,7 @@ a {
   background-color: var(--background);
   height: 10vh;
   width: 10vw;
-  cursor: 'pointer';
+  cursor: pointer;
 }
 
 .stressText{
@@ -226,8 +226,6 @@ margin-right: 2vw;
 .options{
   position: absolute;
   background-color: var(--secondary);
-  top:10vw;
-  left: 20vh;
   width: 40vw;
   height: 30vh;
   z-index: 10;
@@ -236,6 +234,8 @@ margin-right: 2vw;
   justify-content: center;
   text-align: center;
   padding-top: 5vh;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
 }
 
 .slider{

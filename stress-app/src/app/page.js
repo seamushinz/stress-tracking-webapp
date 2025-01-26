@@ -112,7 +112,7 @@ export default function Home() {
               <p>Stress Level Threshold</p>
               <div className="slider">
                 <p>0</p>
-              <input type="range" min={0} max={100} value={currentThreshold} onChange={toggleTreshold}/>
+              <input style={{cursor : 'pointer'}} type="range" min={0} max={100} value={currentThreshold} onChange={toggleTreshold}/>
               <p>100</p>
               </div>
               <p>{currentThreshold}</p>
@@ -143,7 +143,6 @@ export default function Home() {
             {isOverStressed ? (
             <p className="bunnyText">Hey there! lets take a moment to destress a little! choose a destressing method!</p>
             ) : null}
-            
             <img src="/bunnyT.png" className="bunny"/>
           </div>
         </div>
